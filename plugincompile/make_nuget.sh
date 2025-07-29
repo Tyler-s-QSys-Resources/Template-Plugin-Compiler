@@ -42,6 +42,7 @@ nuspec=$(cat <<EOF
     <copyright>Copyright $year</copyright>
     <tags>Q-Sys Plugins</tags>
     <summary>$description</summary>
+    <readme>README.md</readme>
   </metadata>
 </package>
 EOF )
