@@ -4,13 +4,35 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Push Plugin to Server",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "echo Pushing QSys Plugin to Server: ${input:serverAddress}",
+            "windows": {
+                "command": "sh ${workspaceFolder}\\.vscode\\plugincompile\\push_nuget.sh ${workspaceFolder} ${workspaceFolderBasename} ${input:password}",
+                "options": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": [ "/c"  ]
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Compile QSD Plugin",
             "type": "shell",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "command": "echo Update QSD Plugin",
+            "command": "Make Nuget Package for QSD Plugin",
             "windows": {
                 "command": "sh ${workspaceFolder}\\.vscode\\plugincompile\\make_nuget.sh ${workspaceFolder} ${workspaceFolderBasename} ",
                 "options": {
@@ -31,7 +53,7 @@
             "label": "----",
             "type": "shell",
             "group": "build",
-            "command": "echo Update QSD Plugin",
+            "command": "echo Copy QSD Plugin to local folder",
             "windows": {
                 "command": "${workspaceFolder}\\.vscode\\plugincompile\\copy_plugin.cmd ${workspaceFolder} ${workspaceFolderBasename}",
                 "options": {
@@ -51,7 +73,7 @@
             "label": "---",
             "type": "shell",
             "group": "build",            
-            "command": "echo Encrypt Plugin",
+            "command": "echo Encrypting Plugin",
             "windows": {
                 "command": "${workspaceFolder}/encrypt/release/plugin_tool_release.exe encrypt ${workspaceFolder}/${workspaceFolderBasename}.qplug ${workspaceFolder}/${workspaceFolderBasename}.qplugx",
                 "options": {
@@ -71,7 +93,7 @@
             "label": "--",
             "type": "shell",
             "group": "build",
-            "command": "echo Compile Plugin",
+            "command": "echo Compiling Plugin",
             "windows": {
                 "command": "${workspaceFolder}\\.vscode\\plugincompile\\PLUGCC.exe ${workspaceFolderBasename} ${workspaceFolder}\\plugin.lua",
                 "options": {
@@ -91,7 +113,7 @@
             "label": "-",
             "type": "shell",
             "group": "build",
-            "command": "echo Version",
+            "command": "echo Setting Version",
             "windows": {
                 "command": "sh ${workspaceFolder}\\.vscode\\plugincompile\\compile_plugin.sh ${input:ver_inc}",
                 "options": {
@@ -121,6 +143,12 @@
                 "CANCEL"
             ],
             "default": "ver_dev"
+        },
+        {
+            "id": "password",
+            "description": "password for NuGet store",
+            "type": "promptString",
+            "password": true
         },
     ]
 }
