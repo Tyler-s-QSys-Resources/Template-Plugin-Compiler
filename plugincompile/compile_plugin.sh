@@ -69,6 +69,7 @@ then
 
   #echo $newnum
   sed -i -E "s/$oldnum/$newnum/" $infoLua
+  sed -i -E "s/Version = \"[0-9]+(\.[0-9]+)*\",/Version = \"$newnum\",/" "$infoLua"
 else
   echo "not updating buildversion"
 fi
