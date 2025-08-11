@@ -55,7 +55,7 @@
             "group": "build",
             "command": "echo Copy QSD Plugin to local folder",
             "windows": {
-                "command": "${workspaceFolder}\\.vscode\\plugincompile\\copy_plugin.cmd ${workspaceFolder} ${workspaceFolderBasename}",
+                "command": "${workspaceFolder}\\.vscode\\plugincompile\\copy_plugin.cmd ${workspaceFolder} ${workspaceFolderBasename} ${input:localCopy}",
                 "options": {
                     "shell": {
                         "executable": "cmd.exe",
@@ -141,6 +141,16 @@
                 "ver_dev",
                 "ver_none",
                 "CANCEL"
+            ],
+            "default": "ver_dev"
+        },
+        {
+            "id": "localCopy",
+            "description": "Do you want to copy the plugin to your local QSD plugins folder?",
+            "type": "pickString",
+            "options": [
+                "Yes",
+                "No"
             ],
             "default": "ver_dev"
         },

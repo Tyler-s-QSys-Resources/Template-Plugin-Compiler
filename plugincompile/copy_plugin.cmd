@@ -1,5 +1,7 @@
 :: %1 workspaceFolder             C:\qsys_plugins\plugin
 :: %2 workspaceFolderBasename     plugin
+:: %3 copyLocal                   true|false
+
 
 IF exist "%userprofile%\Documents\QSC\Q-Sys Designer\Plugins" (
   set localPluginFolder=%userprofile%\Documents\QSC\Q-Sys Designer\Plugins
@@ -20,8 +22,9 @@ if not exist "%localPluginFolder%\%2" mkdir "%localPluginFolder%\%2"
 ::      QSD was then throwing an access error while the file was being written, so I added code in C# to catch access denied errors,
 ::      in favour of waiting for the next changed notification that allowed the file to be read (i.e. file copying finished)
 
-COPY /Y "%1\%2.qplugx" "%localPluginFolder%\%2\%2.qplugx"
+:: Copy the plugin to the local QSD plugins folder if answered "Yes" to the prompt.
+if "%3"=="Yes" COPY /Y "%1\%2.qplugx" "%localPluginFolder%\%2\%2.qplugx"
+
 XCOPY "%1\assets" "%1\content\content" /E /I /Y
-COPY /Y "%1\README.md" "%1\content\README.md"
 COPY /Y "%1\%2.qplugx" "%1\content\%2.qplugx"
 if exist "%1\demo.qsys" COPY /Y "%1\demo.qsys" "%1\content\%2_DEMO.qsys"

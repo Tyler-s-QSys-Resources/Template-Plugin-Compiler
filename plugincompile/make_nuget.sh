@@ -54,6 +54,10 @@ nuspec=$(cat <<EOF
     <readme>README.md</readme>
     <releaseNotes>{"AssetType":"$AssetType","CodeOwner":"$CodeOwner","DevEmail":"$DevEmail","DevName":"$DevName","DeviceType":"$DeviceType","CustomDeviceType":null,"IsDeprecated":$IsDeprecated,"IsReflectEnabled":$IsReflectEnabled,"License":"$License","Manufacturer":"Aligned Vision Group","PartnerIntegration":"$PartnerIntegration","ReleaseNotes":"$ReleaseNotes","SupportEmail":"$SupportEmail","SupportName":"$SupportName"}</releaseNotes>
   </metadata>
+  <files>
+    <file src="..\content\**\*.*" target="content\" />
+    <file src="..\README.md" target="" />
+  </files>
 </package>
 EOF
 )
