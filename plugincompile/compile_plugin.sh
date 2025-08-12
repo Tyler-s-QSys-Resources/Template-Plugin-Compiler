@@ -5,7 +5,7 @@ then
   exit 1
 fi
 
-infoLua='01-info.lua'
+infoLua='info.lua'
 
 # STEP 0.5 Add plugincompile dir to path temporarily
 PATH="$PATH:$(dirname $0)"
