@@ -1,4 +1,4 @@
-infoLua=$(printf "$1\\%s" "01-info.lua")
+infoLua=$(printf "$1\\%s" "info.lua")
 # echo "infoLua is $infoLua"
 
 build_version=$(grep 'BuildVersion' $infoLua | sed -E 's/.*"([^"]+)".*/\1/')

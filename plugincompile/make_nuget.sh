@@ -1,6 +1,6 @@
 url=$(git config --get remote.origin.url | sed 's/\.git$//')
 year=$(date +%Y)
-infoLua=$(printf "$1\\%s" "01-info.lua")
+infoLua=$(printf "$1\\%s" "info.lua")
 
 extract_string() {
   grep "$1" "$infoLua" | sed -E 's/^[^=]+=\s*"([^"]*)".*/\1/'
