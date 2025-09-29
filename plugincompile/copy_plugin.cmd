@@ -27,4 +27,4 @@ if "%3"=="Yes" COPY /Y "%1\%2.qplugx" "%localPluginFolder%\%2\%2.qplugx"
 
 XCOPY "%1\assets" "%1\content\content" /E /I /Y
 COPY /Y "%1\%2.qplugx" "%1\content\%2.qplugx"
-if exist "%1\demo.qsys" COPY /Y "%1\demo.qsys" "%1\content\%2_DEMO.qsys"
+:: if exist "%1\demo.qsys" COPY /Y "%1\demo.qsys" "%1\content\%2_DEMO.qsys"
